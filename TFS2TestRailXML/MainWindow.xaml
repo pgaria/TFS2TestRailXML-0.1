@@ -1,0 +1,21 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Name="WinMainWindow" x:Class="TFS2TestRailXML.MainWindow"
+        Title="TFS Test Case Export to TestRail XML" Height="289.715" Width="563.629" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="#FF793737" Opacity="1" Margin="0,0,-7,-7.6">
+        <Button x:Name="BtnConnect" Content="..." Height="23" HorizontalAlignment="Left" Margin="506,16,0,0" VerticalAlignment="Top" Width="23" Click="BtnConnect_Click" />
+        <Label x:Name="LblTestPlan" Content="Select a Test Plan" Height="28" HorizontalAlignment="Left" Margin="119,48,0,0" VerticalAlignment="Top" Width="128" BorderBrush="#E6191900" Foreground="AliceBlue" FontStyle="Italic" FontSize="13" HorizontalContentAlignment="Right" />
+        <Label x:Name="LblTestSuites" Content="Select a Test Suite" Height="28" HorizontalAlignment="Left" Margin="131,114,0,0" VerticalAlignment="Top" Width="116" Foreground="AliceBlue" FontStyle="Italic" FontSize="13" HorizontalContentAlignment="Right" />
+        <Label x:Name="Label1" Content="Connect to Team Foundation Server" Height="28" HorizontalAlignment="Left" Margin="27,14,0,0" VerticalAlignment="Top" Foreground="AliceBlue" FontStyle="Italic" FontSize="13" Width="220" HorizontalContentAlignment="Right" />
+        <Label x:Name="Label2" Content="Specify the path for the XML file" Height="28" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" FontSize="13" FontStyle="Italic" Foreground="AliceBlue" HorizontalContentAlignment="Right" Width="237" />
+        <Button x:Name="BtnOpenFileDialog" Content="..." Height="23" HorizontalAlignment="Left" Margin="506,83,0,0" VerticalAlignment="Top" Width="23" Click="BtnOpenFileDialog_Click" />
+        <TextBox x:Name="TbFileName" Height="23" Margin="252,83,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="253" />
+        <TextBox x:Name="TbTfs" Height="23" HorizontalAlignment="Left" Margin="252,16,0,0" VerticalAlignment="Top" Width="253" IsReadOnly="True" />
+        <TreeView x:Name="TvSuites" Height="93" HorizontalAlignment="Left" Margin="252,119,0,0" VerticalAlignment="Top" Width="277" Background="White" BorderBrush="Black" SelectedItemChanged="TvSuites_SelectedItemChanged" />
+        <ComboBox x:Name="CbTestPlans" HorizontalAlignment="Left" Margin="252,50,0,0" VerticalAlignment="Top" Width="277" AllowDrop="True" SelectionChanged="CbTestPlans_SelectionChanged"/>
+        <Button x:Name="btnGenerateXMLFile" Content="Generate XML File" HorizontalAlignment="Left" Margin="27,173,0,0" VerticalAlignment="Top" Width="200" Click="BtnGenerateXMLFile_Click" IsEnabled="False" Height="39" FontSize="16"/>
+        <CheckBox x:Name="HtmlToggle" Content="Strip HTML Tags" HorizontalAlignment="Left" Margin="68,151,0,0" VerticalAlignment="Top" RenderTransformOrigin="12.985,4.508" IsManipulationEnabled="True" FontStyle="Italic" FontSize="13" Foreground="AliceBlue" Background="AliceBlue" IsChecked="True"/>
+        <Label x:Name="LblTemplateWarning" Content="Important: Set TestRail template &quot;Test Case (Individual Steps)&quot; as default before importing XML " Height="28" HorizontalAlignment="Left" Margin="0,217,0,0" VerticalAlignment="Top" Width="546" Foreground="AliceBlue" FontStyle="Italic" FontSize="13" HorizontalContentAlignment="Right" />
+    </Grid>
+</Window>
