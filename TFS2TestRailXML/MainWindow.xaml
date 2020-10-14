@@ -15,7 +15,7 @@
         <TreeView x:Name="TvSuites" Height="93" HorizontalAlignment="Left" Margin="252,119,0,0" VerticalAlignment="Top" Width="277" Background="White" BorderBrush="Black" SelectedItemChanged="TvSuites_SelectedItemChanged" />
         <ComboBox x:Name="CbTestPlans" HorizontalAlignment="Left" Margin="252,50,0,0" VerticalAlignment="Top" Width="277" AllowDrop="True" SelectionChanged="CbTestPlans_SelectionChanged"/>
         <Button x:Name="btnGenerateXMLFile" Content="Generate XML File" HorizontalAlignment="Left" Margin="27,173,0,0" VerticalAlignment="Top" Width="200" Click="BtnGenerateXMLFile_Click" IsEnabled="False" Height="39" FontSize="16"/>
-        <CheckBox x:Name="HtmlToggle" Content="Strip HTML Tags" HorizontalAlignment="Left" Margin="68,151,0,0" VerticalAlignment="Top" RenderTransformOrigin="12.985,4.508" IsManipulationEnabled="True" FontStyle="Italic" FontSize="13" Foreground="AliceBlue" Background="AliceBlue" IsChecked="True"/>
-        <Label x:Name="LblTemplateWarning" Content="Important: Set TestRail template &quot;Test Case (Individual Steps)&quot; as default before importing XML " Height="28" HorizontalAlignment="Left" Margin="0,217,0,0" VerticalAlignment="Top" Width="546" Foreground="AliceBlue" FontStyle="Italic" FontSize="13" HorizontalContentAlignment="Right" />
+        <CheckBox x:Name="htmlToggle" Content="Include Test Description" HorizontalAlignment="Left" Margin="68,151,0,0" VerticalAlignment="Top" RenderTransformOrigin="12.985,4.508" IsManipulationEnabled="True" FontStyle="Italic" FontSize="13" Foreground="AliceBlue" Background="AliceBlue" IsChecked="True"/>
+        <Label x:Name="LblTemplateWarning" Content="Important: If Test Description included then Description is mapped to Precondition in TestRail" Height="28" HorizontalAlignment="Left" Margin="0,217,0,0" VerticalAlignment="Top" Width="546" Foreground="AliceBlue" FontStyle="Italic" FontSize="13" HorizontalContentAlignment="Right" />
     </Grid>
 </Window>

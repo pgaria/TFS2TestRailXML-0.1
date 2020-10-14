@@ -30,6 +30,7 @@ namespace TFS2TestRailXML
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             TbFileName.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\TestRail Import.xml";
+           
         }
 
         void BtnConnect_Click(object sender, RoutedEventArgs e)
@@ -419,7 +420,9 @@ namespace TFS2TestRailXML
             caseNode.AppendChild(titleNode);
             XmlNode typeNode = xmlDoc.CreateElement("type");
             caseNode.AppendChild(typeNode);
+            // Map the Priority value between MTM and Test Rail.
             XmlNode priorityNode = xmlDoc.CreateElement("priority");
+            priorityNode.InnerText = PriorityMapping(testCase.Priority);
             caseNode.AppendChild(priorityNode);
             XmlNode estimateNode = xmlDoc.CreateElement("estimate");
             caseNode.AppendChild(estimateNode);
@@ -429,8 +432,8 @@ namespace TFS2TestRailXML
 
             int i;
             var j = 0;
-            for (i = 0; i <= testCase.WorkItem.WorkItemLinks.Count-1; i++)
-            {  
+            for (i = 0; i <= testCase.WorkItem.WorkItemLinks.Count - 1; i++)
+            {
                 var workItemStore = new WorkItemStore(_tfs);
                 var workItem = workItemStore.GetWorkItem(testCase.WorkItem.WorkItemLinks[i].TargetId);
                 if (workItem.Type.Name == "Product Backlog Item")
@@ -451,9 +454,14 @@ namespace TFS2TestRailXML
             caseNode.AppendChild(referencesNode);
             XmlNode customNode = xmlDoc.CreateElement("custom");
             caseNode.AppendChild(customNode);
+
+            // If the Include Description Check Box is Checked then add the Description as Precondition.
+            if (htmlToggle.IsChecked.Value == true) {
             XmlNode descriptionNode = xmlDoc.CreateElement("preconds");
             descriptionNode.InnerText = StripHtml(testCase.Description);
             customNode.AppendChild(descriptionNode);
+            }
+
             XmlNode stepsNode = xmlDoc.CreateElement("steps_separated");
             customNode.AppendChild(stepsNode);
            
@@ -501,7 +509,7 @@ namespace TFS2TestRailXML
         {
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(value);
-            if (htmlDoc == null || !HtmlToggle.IsChecked.Value)
+            if (htmlDoc == null)
             {
                 return value;
             }
@@ -517,6 +525,13 @@ namespace TFS2TestRailXML
                                                        .Replace("&nbsp;", "")
                                                        .Replace("&quot;","\"");
             return sanitizedUnescaped;
+        }
+
+        private string PriorityMapping(int priority)
+        {
+            if (priority == 1)
+                return "High";
+            else return priority == 2 ? "Middle" : "Low";
         }
 
     }
